@@ -65,6 +65,71 @@ class MainPageTest {
         }
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(WebDriverProvider::class)
+    fun checkBrandsSize(drivers: List<WebDriver>) {
+        this.drivers = drivers
+        drivers.forEach { driver ->
+            mainPage = MainPage(driver)
+            mainPage.expandBrandsClick()
+            Assertions.assertEquals(173, mainPage.getBrandsListSize())
+        }
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(WebDriverProvider::class)
+    fun checkBMWAdvertisement(drivers: List<WebDriver>) {
+        this.drivers = drivers
+        val brand = "BMW"
+        drivers.forEach { driver ->
+            mainPage = MainPage(driver)
+            mainPage.waitUntilPageIsLoaded(1000)
+            mainPage.brandClick(brand)
+            val ads = mainPage.getAds()
+
+            ads.forEach { ad ->
+                Assertions.assertTrue(ad.contains(brand))
+            }
+
+        }
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(WebDriverProvider::class)
+    fun checkCheryAdvertisement(drivers: List<WebDriver>) {
+        this.drivers = drivers
+        val brand = "Chery"
+        drivers.forEach { driver ->
+            mainPage = MainPage(driver)
+            mainPage.waitUntilPageIsLoaded(1000)
+            mainPage.brandClick(brand)
+            val ads = mainPage.getAds()
+
+            ads.forEach { ad ->
+                Assertions.assertTrue(ad.contains(brand))
+            }
+
+        }
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(WebDriverProvider::class)
+    fun checkToyotaAdvertisement(drivers: List<WebDriver>) {
+        this.drivers = drivers
+        val brand = "Toyota"
+        drivers.forEach { driver ->
+            mainPage = MainPage(driver)
+            mainPage.waitUntilPageIsLoaded(1000)
+            mainPage.brandClick(brand)
+            val ads = mainPage.getAds()
+
+            ads.forEach { ad ->
+                Assertions.assertTrue(ad.contains(brand))
+            }
+
+        }
+    }
+
     @AfterEach
     fun quitDrivers() {
         drivers.forEach(WebDriver::quit)

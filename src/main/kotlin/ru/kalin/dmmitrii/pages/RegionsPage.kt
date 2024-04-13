@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver
 import ru.kalin.dmmitrii.util.URL
 
 class RegionsPage(
-    private val driver: WebDriver,
-) : AbstractPage() {
+    driver: WebDriver,
+) : AbstractPage(driver) {
     private val url = "${URL}my_region/"
 
     init {
