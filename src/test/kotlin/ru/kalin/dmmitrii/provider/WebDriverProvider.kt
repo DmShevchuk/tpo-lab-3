@@ -23,7 +23,7 @@ class WebDriverProvider : ArgumentsProvider {
             println("Settings file '${PROPERTIES_FILE}' not found")
         }
 
-        System.setProperty("webdriver.chrome.driver", props.getProperty("webdriver.chrome.driver"))
+//        System.setProperty("webdriver.chrome.driver", props.getProperty("webdriver.chrome.driver"))
         System.setProperty("webdriver.gecko.driver", props.getProperty("webdriver.firefox.driver"))
     }
     override fun provideArguments(context: ExtensionContext?): Stream<out Arguments> {
