@@ -130,6 +130,106 @@ class MainPageTest {
         }
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(WebDriverProvider::class)
+    fun checkEconomyClass(drivers: List<WebDriver>) {
+        this.drivers = drivers
+        drivers.forEach { driver ->
+            mainPage = MainPage(driver)
+            val category = mainPage.getCategory(1)
+
+            mainPage.waitUntilPageIsLoaded(3000)
+            category.click()
+            mainPage.waitUntilPageIsLoaded(3000)
+            val prices = mainPage.getPricesForCategory()
+            prices.forEach { price ->
+                val maxPrice = mainPage.getMaxPriceFromFilter()
+                val minPrice = mainPage.getMinPriceFromFilter()
+                if (minPrice != null) {
+                    Assertions.assertTrue(price >= minPrice)
+                }
+                if (maxPrice != null) {
+                    Assertions.assertTrue(price <= maxPrice)
+                }
+            }
+        }
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(WebDriverProvider::class)
+    fun checkComfortClass(drivers: List<WebDriver>) {
+        this.drivers = drivers
+        drivers.forEach { driver ->
+            mainPage = MainPage(driver)
+            val category = mainPage.getCategory(2)
+
+            mainPage.waitUntilPageIsLoaded(3000)
+            category.click()
+            mainPage.waitUntilPageIsLoaded(3000)
+            val prices = mainPage.getPricesForCategory()
+            prices.forEach { price ->
+                val maxPrice = mainPage.getMaxPriceFromFilter()
+                val minPrice = mainPage.getMinPriceFromFilter()
+                if (minPrice != null) {
+                    Assertions.assertTrue(price >= minPrice)
+                }
+                if (maxPrice != null) {
+                    Assertions.assertTrue(price <= maxPrice)
+                }
+            }
+        }
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(WebDriverProvider::class)
+    fun checkBusinessClass(drivers: List<WebDriver>) {
+        this.drivers = drivers
+        drivers.forEach { driver ->
+            mainPage = MainPage(driver)
+            val category = mainPage.getCategory(3)
+
+            mainPage.waitUntilPageIsLoaded(3000)
+            category.click()
+            mainPage.waitUntilPageIsLoaded(3000)
+            val prices = mainPage.getPricesForCategory()
+            prices.forEach { price ->
+                val maxPrice = mainPage.getMaxPriceFromFilter()
+                val minPrice = mainPage.getMinPriceFromFilter()
+                if (minPrice != null) {
+                    Assertions.assertTrue(price >= minPrice)
+                }
+                if (maxPrice != null) {
+                    Assertions.assertTrue(price <= maxPrice)
+                }
+            }
+        }
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(WebDriverProvider::class)
+    fun checkPremiumClass(drivers: List<WebDriver>) {
+        this.drivers = drivers
+        drivers.forEach { driver ->
+            mainPage = MainPage(driver)
+            val category = mainPage.getCategory(3)
+
+            mainPage.waitUntilPageIsLoaded(3000)
+            category.click()
+            mainPage.waitUntilPageIsLoaded(3000)
+            val prices = mainPage.getPricesForCategory()
+            prices.forEach { price ->
+                val maxPrice = mainPage.getMaxPriceFromFilter()
+                val minPrice = mainPage.getMinPriceFromFilter()
+                if (minPrice != null) {
+                    Assertions.assertTrue(price >= minPrice)
+                }
+                if (maxPrice != null) {
+                    Assertions.assertTrue(price <= maxPrice)
+                }
+            }
+        }
+    }
+
     @AfterEach
     fun quitDrivers() {
         drivers.forEach(WebDriver::quit)
