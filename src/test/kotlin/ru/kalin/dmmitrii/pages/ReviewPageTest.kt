@@ -6,6 +6,7 @@ import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ArgumentsSource
 import org.openqa.selenium.By
+import org.openqa.selenium.NoSuchElementException
 import org.openqa.selenium.WebDriver
 import ru.kalin.dmmitrii.provider.WebDriverProvider
 import kotlin.test.assertEquals
@@ -381,9 +382,9 @@ class ReviewPageTest {
             driver.get(reviewPage.clickReviewLinkByCardIndex("[1]"))
 
             val table = reviewPage.getCharacteristicsTableContent();
-            val rows = table.findElements(By.tagName("tr"))
+            val rows = table.findElements(By.xpath("//tr"))
             for (row in rows) {
-                val cells = row.findElements(By.tagName("td"))
+                val cells = row.findElements(By.xpath("//td"))
                 val label = cells[0].text
                 val value = cells[1].text
                 if (label.equals("Год выпуска")) {
@@ -462,10 +463,10 @@ class ReviewPageTest {
             driver.get(reviewPage.clickReviewLinkByCardIndex("[1]"))
 
             val table = reviewPage.getCharacteristicsTableContent();
-            val rows = table.findElements(By.tagName("tr"))
+            val rows = table.findElements(By.xpath("//tr"))
 
             for (row in rows) {
-                val cells = row.findElements(By.tagName("td"))
+                val cells = row.findElements(By.xpath("//td"))
                 val label = cells[0].text
                 val value = cells[1].text
                 if (label.equals("Год выпуска")) {
@@ -545,10 +546,10 @@ class ReviewPageTest {
             driver.get(reviewPage.clickReviewLinkByCardIndex("[1]"))
 
             val table = reviewPage.getCharacteristicsTableContent();
-            val rows = table.findElements(By.tagName("tr"))
+            val rows = table.findElements(By.xpath("//tr"))
 
             for (row in rows) {
-                val cells = row.findElements(By.tagName("td"))
+                val cells = row.findElements(By.xpath("//td"))
                 val label = cells[0].text
                 val value = cells[1].text
                 if (label.equals("Год выпуска")) {
@@ -644,10 +645,10 @@ class ReviewPageTest {
             driver.get(reviewPage.clickReviewLinkByCardIndex("[1]"))
 
             val table = reviewPage.getCharacteristicsTableContent();
-            val rows = table.findElements(By.tagName("tr"))
+            val rows = table.findElements(By.xpath("//tr"))
 
             for (row in rows) {
-                val cells = row.findElements(By.tagName("td"))
+                val cells = row.findElements(By.xpath("//td"))
                 val label = cells[0].text
                 val value = cells[1].text
                 if (label.equals("Год выпуска")) {
@@ -745,15 +746,14 @@ class ReviewPageTest {
 
             reviewPage.scrollToElement(reviewPage.getResultList())
 
-            Thread.sleep(50000)
             reviewPage.scrollToElement(reviewPage.getResultList())
             driver.get(reviewPage.clickReviewLinkByCardIndex("[2]"))
 
             val table = reviewPage.getCharacteristicsTableContent();
-            val rows = table.findElements(By.tagName("tr"))
+            val rows = table.findElements(By.xpath("//tr"))
 
             for (row in rows) {
-                val cells = row.findElements(By.tagName("td"))
+                val cells = row.findElements(By.xpath("//td"))
                 val label = cells[0].text
                 val value = cells[1].text
                 if (label.equals("Год выпуска")) {

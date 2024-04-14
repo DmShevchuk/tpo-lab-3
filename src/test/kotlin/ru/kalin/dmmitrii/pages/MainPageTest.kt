@@ -72,7 +72,7 @@ class MainPageTest {
         drivers.forEach { driver ->
             mainPage = MainPage(driver)
             mainPage.expandBrandsClick()
-            Assertions.assertEquals(173, mainPage.getBrandsListSize())
+            Assertions.assertEquals(174, mainPage.getBrandsListSize())
         }
     }
 
